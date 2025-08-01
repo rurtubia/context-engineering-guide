@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía de Context Engineering y Agentes de IA</title>
+    <!-- Carga de Tailwind CSS para un estilo moderno y responsivo -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a202c; /* Fondo oscuro */
+            color: #e2e8f0; /* Texto claro */
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 80rem;
+        }
+        .nav-link {
+            transition: all 0.3s ease;
+        }
+        .nav-link.active {
+            background-color: #3f51b5; /* Un color de acento para el enlace activo */
+            color: white;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="flex h-screen bg-gray-900 text-gray-200">
+        <!-- Menú lateral de navegación -->
+        <nav class="w-64 p-6 bg-gray-800 shadow-lg flex flex-col justify-start items-center space-y-4">
+            <h2 class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-500 text-center mb-6">Menú</h2>
+            <ul class="w-full space-y-2">
+                <li><a href="#" data-page="que-es" class="nav-link block p-3 rounded-lg text-gray-300 hover:bg-gray-700 transition-colors duration-300">1. ¿Qué es?</a></li>
+                <li><a href="#" data-page="detalle" class="nav-link block p-3 rounded-lg text-gray-300 hover:bg-gray-700 transition-colors duration-300">2. Detalle</a></li>
+                <li><a href="#" data-page="prompt-vs-context" class="nav-link block p-3 rounded-lg text-gray-300 hover:bg-gray-700 transition-colors duration-300">3. Prompt vs. Context</a></li>
+                <li><a href="#" data-page="componentes" class="nav-link block p-3 rounded-lg text-gray-300 hover:bg-gray-700 transition-colors duration-300">4. Componentes de un Agente</a></li>
+                <li><a href="#" data-page="ejemplo" class="nav-link block p-3 rounded-lg text-gray-300 hover:bg-gray-700 transition-colors duration-300">5. Ejemplo de un Prompt</a></li>
+                <li><a href="#" data-page="recursos" class="nav-link block p-3 rounded-lg text-gray-300 hover:bg-gray-700 transition-colors duration-300">6. Recursos</a></li>
+            </ul>
+        </nav>
+
+        <!-- Contenedor principal para el contenido de la página -->
+        <main id="content" class="flex-1 p-8 overflow-y-auto">
+            <!-- El contenido se cargará aquí dinámicamente -->
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const contentContainer = document.getElementById('content');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            // Un objeto para almacenar el contenido HTML de cada "página"
+            const pages = {
+                'que-es': `
+                    <header class="text-center mb-12">
+                        <h1 class="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-500 mb-2">
+                            Context Engineering y Agentes de IA
+                        </h1>
+                        <p class="text-lg text-gray-400">Una guía completa basada en las ideas de un video educativo.</p>
+                    </header>
+                    <section id="que-es-content" class="bg-gray-800 p-6 md:p-10 rounded-xl shadow-lg mb-12">
+                        <h2 class="text-3xl font-semibold mb-4 text-blue-300">1. ¿Qué es el Context Engineering?</h2>
+                        <p class="text-gray-300 mb-4">
+                            El <strong>Context Engineering</strong> es el proceso de "diseñar y construir sistemas dinámicos para darle a un LLM la información correcta, en el formato correcto, en el momento correcto para que complete una tarea".
+                        </p>
+                        <p class="text-gray-300">
+                            En esencia, se trata de optimizar la ventana de contexto de un modelo de lenguaje, que es su área de entrada, con todas las instrucciones, conocimientos y herramientas necesarias para una tarea específica.
+                        </p>
+                    </section>
+                `,
+                'detalle': `
+                    <header class="text-center mb-12">
+                        <h1 class="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-500 mb-2">
+                            Context Engineering y Agentes de IA
+                        </h1>
+                        <p class="text-lg text-gray-400">Una guía completa basada en las ideas de un video educativo.</p>
+                    </header>
+                    <section id="detalle-content" class="bg-gray-800 p-6 md:p-10 rounded-xl shadow-lg mb-12">
+                        <h2 class="text-3xl font-semibold mb-6 text-blue-300">2. Detalle sobre Context Engineering</h2>
+                        <p class="text-gray-300 mb-4">
+                            El <strong>Context Engineering</strong> es un enfoque sofisticado en la Inteligencia Artificial (IA) que se centra en proporcionar a los Grandes Modelos de Lenguaje (LLMs) la información más relevante y estructurada de manera efectiva para que realicen tareas específicas. Se describe como el diseño y la construcción de sistemas dinámicos que le dan a un LLM la información correcta, en el formato correcto, en el momento correcto para completar una tarea. Esencialmente, se trata de "empaquetar" la ventana de contexto (el área de entrada de un LLM) de la manera adecuada.
+                        </p>
+                        
+                        <h3 class="text-2xl font-bold text-green-300 mb-3">Más allá del Prompt Engineering</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-300 mb-6">
+                            <li>Inicialmente, el enfoque en la IA era el "prompt engineering", que consistía en crear la instrucción perfecta para obtener el resultado deseado.</li>
+                            <li>Sin embargo, a medida que las aplicaciones de IA se volvieron más complejas, especialmente con el auge de los agentes de IA, los prompts por sí solos resultaron insuficientes.</li>
+                            <li>El <strong>Context Engineering</strong> surgió como un enfoque más poderoso, yendo más allá de la redacción inteligente a un sistema para proporcionar un contexto integral.</li>
+                            <li>Mientras que el Prompt Engineering se centra en lo que le dices a un modelo de IA en un momento dado, el <strong>Context Engineering</strong> se enfoca en diseñar todo el ecosistema de información que rodea cada interacción.</li>
+                        </ul>
+
+                        <h3 class="text-2xl font-bold text-green-300 mb-3">¿Qué constituye el "Contexto"?</h3>
+                        <p class="text-gray-300 mb-4">
+                            El contexto no es solo el prompt, sino la carga de información completa que se le proporciona a un LLM en el momento de la inferencia. Este "lienzo de contexto" puede incluir:
+                        </p>
+                        <ul class="list-disc list-inside space-y-2 text-gray-300 mb-6">
+                            <li>El prompt del sistema/instrucción: Define el comportamiento del agente.</li>
+                            <li>La entrada del usuario: Una pregunta o una solicitud.</li>
+                            <li>Memoria a corto plazo/historial de chat: Proporciona contexto conversacional.</li>
+                            <li>Memoria a largo plazo: Almacena conocimientos, preferencias o resúmenes de proyectos.</li>
+                            <li>Información recuperada de una base de conocimientos: Información externa y actualizada (relacionada con RAG).</li>
+                            <li>Herramientas y sus definiciones: Funciones que el LLM puede invocar.</li>
+                            <li>Respuestas de las herramientas: Los resultados de la ejecución de herramientas.</li>
+                            <li>Salidas estructuradas: Definiciones sobre el formato de la respuesta (por ejemplo, objetos JSON).</li>
+                            <li>Estado global/contexto: Información del flujo de trabajo a través de los pasos del agente.</li>
+                        </ul>
+
+                        <h3 class="text-2xl font-bold text-green-300 mb-3">Por qué es crucial el Context Engineering</h3>
+                        <p class="text-gray-300 mb-4">
+                            Los LLMs predicen la siguiente palabra o acción basándose en las entradas. Si el contexto es deficiente, la salida también lo será. Es crucial para construir aplicaciones de IA como agentes, ya que estos requieren un conjunto completo de instrucciones para todos los escenarios posibles.
+                        </p>
+                        <ul class="list-disc list-inside space-y-2 text-gray-300 mb-6">
+                            <li>Asegura un rendimiento consistente.</li>
+                            <li>Permite que los sistemas de IA aprendan y mejoren.</li>
+                            <li>Permite escalar la inteligencia sin supervisión humana.</li>
+                            <li>Ayuda a prevenir la sobrecarga de contexto al dividir tareas complejas en pasos.</li>
+                        </ul>
+
+                        <h3 class="text-2xl font-bold text-green-300 mb-3">Técnicas y Estrategias Clave</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-300 mb-6">
+                            <li><strong>Escribir contexto:</strong> Permitir que el LLM anote información para su uso posterior.</li>
+                            <li><strong>Seleccionar contexto:</strong> Extraer información de fuentes externas (como RAG).</li>
+                            <li><strong>Comprimir contexto:</strong> Usar técnicas para hacer la información más compacta (resumen inteligente, etc.).</li>
+                            <li><strong>Aislar contexto:</strong> Dividir el contexto entre diferentes entornos o sistemas multi-agente.</li>
+                            <li><strong>Información estructurada:</strong> Usar formatos como JSON para proporcionar contexto relevante.</li>
+                            <li><strong>Ingeniería de Flujo de Trabajo:</strong> Definir secuencias de pasos del LLM para completar el trabajo de manera confiable.</li>
+                        </ul>
+
+                        <h3 class="text-2xl font-bold text-green-300 mb-3">Analogías</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-300">
+                            <li>Andrej Karpathy lo describió como escribir un guion completo para la IA, en lugar de una sola oración.</li>
+                            <li>Otra analogía compara el LLM con una CPU y la ventana de contexto con la RAM.</li>
+                            <li>También se compara con un manual de instrucciones detallado para un agente de IA.</li>
+                        </ul>
+                    </section>
+                `,
+                'prompt-vs-context': `
+                    <header class="text-center mb-12">
+                        <h1 class="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-500 mb-2">
+                            Context Engineering y Agentes de IA
+                        </h1>
+                        <p class="text-lg text-gray-400">Una guía completa basada en las ideas de un video educativo.</p>
+                    </header>
+                    <section id="prompt-vs-context-content" class="bg-gray-800 p-6 md:p-10 rounded-xl shadow-lg mb-12">
+                        <h2 class="text-3xl font-semibold mb-6 text-blue-300">3. Prompt Engineering vs. Context Engineering</h2>
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <!-- Columna de Prompt Engineering -->
+                            <div class="bg-gray-700 p-6 rounded-lg shadow-md">
+                                <h3 class="text-2xl font-bold text-green-300 mb-2">Prompt Engineering</h3>
+                                <p class="text-gray-300">
+                                    Es relevante para interacciones conversacionales sencillas con chatbots como ChatGPT. Implica un diálogo de ida y vuelta para refinar las respuestas. Por ejemplo, pidiendo recomendaciones de calzado para correr en función de pies planos, precio, y otros detalles.
+                                </p>
+                            </div>
+                            <!-- Columna de Context Engineering -->
+                            <div class="bg-gray-700 p-6 rounded-lg shadow-md">
+                                <h3 class="text-2xl font-bold text-blue-300 mb-2">Context Engineering</h3>
+                                <p class="text-gray-300">
+                                    Se vuelve crucial al construir aplicaciones de IA complejas, especialmente agentes de IA. A diferencia del chat interactivo, los agentes requieren un conjunto completo de instrucciones para anticipar todas las acciones posibles. No se les puede corregir continuamente; necesitan estar equipados con toda la información necesaria de antemano.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                `,
+                'componentes': `
+                    <header class="text-center mb-12">
+                        <h1 class="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-500 mb-2">
+                            Context Engineering y Agentes de IA
+                        </h1>
+                        <p class="text-lg text-gray-400">Una guía completa basada en las ideas de un video educativo.</p>
+                    </header>
+                    <section id="componentes-content" class="bg-gray-800 p-6 md:p-10 rounded-xl shadow-lg mb-12">
+                        <h2 class="text-3xl font-semibold mb-6 text-blue-300">4. Seis Componentes Esenciales de un Agente de IA</h2>
+                        <p class="text-gray-300 mb-6">
+                            Un "Agente" es un sistema de software que usa IA para perseguir metas y completar tareas para los usuarios. Todos los agentes constan de seis bloques de construcción clave:
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <!-- Componente: Modelo -->
+                            <div class="bg-gray-700 p-6 rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
+                                <div class="flex items-center mb-3">
+                                    <span class="text-3xl mr-3">🧠</span>
+                                    <h3 class="text-xl font-bold text-white">Modelo</h3>
+                                </div>
+                                <p class="text-gray-400">El motor de inteligencia que impulsa el razonamiento y la toma de decisiones (ej. GPT, Claude, Gemini).</p>
+                            </div>
+                            <!-- Componente: Herramientas -->
+                            <div class="bg-gray-700 p-6 rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
+                                <div class="flex items-center mb-3">
+                                    <span class="text-3xl mr-3">🛠️</span>
+                                    <h3 class="text-xl font-bold text-white">Herramientas</h3>
+                                </div>
+                                <p class="text-gray-400">Interfaces que permiten al agente interactuar con sistemas externos y APIs para realizar acciones en el mundo real.</p>
+                            </div>
+                            <!-- Componente: Conocimiento y Memoria -->
+                            <div class="bg-gray-700 p-6 rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
+                                <div class="flex items-center mb-3">
+                                    <span class="text-3xl mr-3">📚</span>
+                                    <h3 class="text-xl font-bold text-white">Conocimiento y Memoria</h3>
+                                </div>
+                                <p class="text-gray-400">Sistemas para almacenar y recuperar información, incluyendo interacciones pasadas y conocimientos aprendidos.</p>
+                            </div>
+                            <!-- Componente: Audio y Voz -->
+                            <div class="bg-gray-700 p-6 rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
+                                <div class="flex items-center mb-3">
+                                    <span class="text-3xl mr-3">🗣️</span>
+                                    <h3 class="text-xl font-bold text-white">Audio y Voz</h3>
+                                </div>
+                                <p class="text-gray-400">Capacidades para entender y generar lenguaje hablado, permitiendo interacciones basadas en la voz.</p>
+                            </div>
+                            <!-- Componente: Barreras de Seguridad (Guardrails) -->
+                            <div class="bg-gray-700 p-6 rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
+                                <div class="flex items-center mb-3">
+                                    <span class="text-3xl mr-3">🚧</span>
+                                    <h3 class="text-xl font-bold text-white">Barreras de Seguridad</h3>
+                                </div>
+                                <p class="text-gray-400">Mecanismos de seguridad para asegurar un comportamiento apropiado y prevenir acciones dañinas o no intencionadas.</p>
+                            </div>
+                            <!-- Componente: Orquestación -->
+                            <div class="bg-gray-700 p-6 rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
+                                <div class="flex items-center mb-3">
+                                    <span class="text-3xl mr-3">📊</span>
+                                    <h3 class="text-xl font-bold text-white">Orquestación</h3>
+                                </div>
+                                <p class="text-gray-400">Sistemas para desplegar, monitorear y mejorar agentes en entornos de producción.</p>
+                            </div>
+                        </div>
+                    </section>
+                `,
+                'ejemplo': `
+                    <header class="text-center mb-12">
+                        <h1 class="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-500 mb-2">
+                            Context Engineering y Agentes de IA
+                        </h1>
+                        <p class="text-lg text-gray-400">Una guía completa basada en las ideas de un video educativo.</p>
+                    </header>
+                    <section id="ejemplo-content" class="bg-gray-800 p-6 md:p-10 rounded-xl shadow-lg mb-12">
+                        <h2 class="text-3xl font-semibold mb-6 text-blue-300">5. Ejemplo de un Prompt de Context Engineering</h2>
+                        <p class="text-gray-300 mb-6">
+                            Un prompt estructurado para un asistente de investigación de IA. El prompt se organiza con secciones claras y el uso de etiquetas XML y formato JSON para una comunicación precisa.
+                        </p>
+                        <pre class="bg-gray-900 text-gray-100 p-6 rounded-lg overflow-x-auto text-sm md:text-base"><code># Role
+You are an AI research assistant focused on identifying and summarizing recent trends in AI from multiple source types.
+
+# Task
+You will receive a user query inside <user_query> tags.
+1. Extract and prioritize subtasks from the user query.
+2. For each subtask, generate a JSON output (specifying id, query, source_type, time_period, domain_focus, priority, start_date, end_date).
+3. Calculate correct date ranges for each subtask.
+4. Finally, summarize findings within a word limit using bullet points or short paragraphs, avoiding fluff or personal commentary.
+
+# Input
+Specifies the format for the user's research query, enclosed in <user_query>.
+
+# Output
+Defines the exact JSON format for the subtasks and the summary format.
+
+# Constraints
+Sets limitations on the AI's responses, emphasizing conciseness and objectivity.
+
+# Capabilities & Reminders
+Informs the AI about available tools (e.g., web search) and reminds it of important considerations (e.g., current date for news relevance, summarizing only recent information).</code></pre>
+                    </section>
+                `,
+                'recursos': `
+                    <header class="text-center mb-12">
+                        <h1 class="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-500 mb-2">
+                            Context Engineering y Agentes de IA
+                        </h1>
+                        <p class="text-lg text-gray-400">Una guía completa basada en las ideas de un video educativo.</p>
+                    </header>
+                    <section id="recursos-content" class="bg-gray-800 p-6 md:p-10 rounded-xl shadow-lg mb-12">
+                        <h2 class="text-3xl font-semibold mb-6 text-blue-300">6. Recursos Adicionales</h2>
+                        <ul class="list-disc list-inside space-y-4">
+                            <li class="text-gray-300">
+                                <span class="font-bold">Cognition Blog Post:</span> <a href="#" class="text-blue-400 hover:text-blue-300 underline">"Don't Build Multi-Agents"</a> - Un artículo que comparte principios clave para el context engineering en marcos de trabajo multi-agente, como la importancia de compartir contexto.
+                            </li>
+                            <li class="text-gray-300">
+                                <span class="font-bold">LangChain Article:</span> Un artículo que detalla estrategias para el context engineering, incluyendo cómo escribir, seleccionar, comprimir y aislar el contexto de manera efectiva.
+                            </li>
+                        </ul>
+                    </section>
+                `
+            };
+
+            // Función para cargar el contenido de una página
+            function loadPage(pageName) {
+                // Actualiza el contenido del contenedor principal
+                contentContainer.innerHTML = pages[pageName];
+                
+                // Actualiza la clase 'active' para resaltar el enlace de navegación actual
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('data-page') === pageName) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            // Añade event listeners a todos los enlaces de navegación
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const pageName = e.target.getAttribute('data-page');
+                    if (pageName) {
+                        loadPage(pageName);
+                    }
+                });
+            });
+
+            // Carga la primera página por defecto al iniciar
+            loadPage('que-es');
+        });
+    </script>
+</body>
+</html>
