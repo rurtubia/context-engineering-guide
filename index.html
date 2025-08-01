@@ -97,7 +97,7 @@
 
                         <h3 class="text-2xl font-bold text-green-300 mb-3">¿Qué constituye el "Contexto"?</h3>
                         <p class="text-gray-300 mb-4">
-                            El contexto no es solo el prompt, sino la carga de información completa que se le proporciona a un LLM en el momento de la inferencia. Este "lienzo de contexto" puede incluir:
+                            El contexto no es solo el prompt, sino la carga de información completa que se le proporciona a un LLM en el momento de la inferencia. Este "Context Canvas" puede incluir:
                         </p>
                         <ul class="list-disc list-inside space-y-2 text-gray-300 mb-6">
                             <li>El prompt del sistema/instrucción: Define el comportamiento del agente.</li>
@@ -105,9 +105,9 @@
                             <li>Memoria a corto plazo/historial de chat: Proporciona contexto conversacional.</li>
                             <li>Memoria a largo plazo: Almacena conocimientos, preferencias o resúmenes de proyectos.</li>
                             <li>Información recuperada de una base de conocimientos: Información externa y actualizada (relacionada con RAG).</li>
-                            <li>Herramientas y sus definiciones: Funciones que el LLM puede invocar.</li>
-                            <li>Respuestas de las herramientas: Los resultados de la ejecución de herramientas.</li>
-                            <li>Salidas estructuradas: Definiciones sobre el formato de la respuesta (por ejemplo, objetos JSON).</li>
+                            <li>Tools y sus definiciones: Funciones que el LLM puede invocar.</li>
+                            <li>Respuestas de las tools: Los resultados de la ejecución de las tools.</li>
+                            <li>Structured Information: Definiciones sobre el formato de la respuesta (por ejemplo, objetos JSON).</li>
                             <li>Estado global/contexto: Información del flujo de trabajo a través de los pasos del agente.</li>
                         </ul>
 
@@ -124,12 +124,12 @@
 
                         <h3 class="text-2xl font-bold text-green-300 mb-3">Técnicas y Estrategias Clave</h3>
                         <ul class="list-disc list-inside space-y-2 text-gray-300 mb-6">
-                            <li><strong>Escribir contexto:</strong> Permitir que el LLM anote información para su uso posterior.</li>
-                            <li><strong>Seleccionar contexto:</strong> Extraer información de fuentes externas (como RAG).</li>
-                            <li><strong>Comprimir contexto:</strong> Usar técnicas para hacer la información más compacta (resumen inteligente, etc.).</li>
-                            <li><strong>Aislar contexto:</strong> Dividir el contexto entre diferentes entornos o sistemas multi-agente.</li>
-                            <li><strong>Información estructurada:</strong> Usar formatos como JSON para proporcionar contexto relevante.</li>
-                            <li><strong>Ingeniería de Flujo de Trabajo:</strong> Definir secuencias de pasos del LLM para completar el trabajo de manera confiable.</li>
+                            <li><strong>Write Context:</strong> Permitir que el LLM anote información para su uso posterior.</li>
+                            <li><strong>Select Context:</strong> Extraer información de fuentes externas (como RAG).</li>
+                            <li><strong>Compress Context:</strong> Usar técnicas para hacer la información más compacta (resumen inteligente, etc.).</li>
+                            <li><strong>Isolate Context:</strong> Dividir el contexto entre diferentes entornos o sistemas multi-agente.</li>
+                            <li><strong>Structured Information:</strong> Usar formatos como JSON para proporcionar contexto relevante.</li>
+                            <li><strong>Workflow Engineering:</strong> Definir secuencias de pasos del LLM para completar el trabajo de manera confiable.</li>
                         </ul>
 
                         <h3 class="text-2xl font-bold text-green-300 mb-3">Analogías</h3>
@@ -138,6 +138,179 @@
                             <li>Otra analogía compara el LLM con una CPU y la ventana de contexto con la RAM.</li>
                             <li>También se compara con un manual de instrucciones detallado para un agente de IA.</li>
                         </ul>
+
+                        <!-- Sección de Cuestionario -->
+                        <div class="mt-12 p-6 rounded-xl bg-gray-700 shadow-lg">
+                            <h3 class="text-2xl font-bold text-blue-300 mb-6">Cuestionario: Pon a prueba tus conocimientos</h3>
+                            
+                            <!-- Pregunta 1 -->
+                            <div class="mb-8">
+                                <p class="font-semibold text-lg text-gray-200 mb-4">1. ¿Cuál es la principal diferencia entre el Prompt Engineering y el Context Engineering?</p>
+                                <div class="space-y-3">
+                                    <label class="flex items-center cursor-pointer text-gray-300 hover:text-white transition-colors duration-200">
+                                        <input type="radio" name="q1" value="a" class="form-radio h-4 w-4 text-blue-500 bg-gray-800 border-gray-600 focus:ring-blue-400 transition-colors duration-200">
+                                        <span class="ml-2">a) Prompt Engineering se enfoca en la redacción de prompts, mientras que Context Engineering se enfoca en el hardware del LLM.</span>
+                                    </label>
+                                    <label class="flex items-center cursor-pointer text-gray-300 hover:text-white transition-colors duration-200">
+                                        <input type="radio" name="q1" value="b" class="form-radio h-4 w-4 text-blue-500 bg-gray-800 border-gray-600 focus:ring-blue-400 transition-colors duration-200">
+                                        <span class="ml-2">b) Prompt Engineering es para agentes de IA complejos, mientras que Context Engineering es para chatbots sencillos.</span>
+                                    </label>
+                                    <label class="flex items-center cursor-pointer text-gray-300 hover:text-white transition-colors duration-200">
+                                        <input type="radio" name="q1" value="c" class="form-radio h-4 w-4 text-blue-500 bg-gray-800 border-gray-600 focus:ring-blue-400 transition-colors duration-200">
+                                        <span class="ml-2">c) Prompt Engineering se centra en la instrucción de un momento dado, mientras que Context Engineering se centra en todo el ecosistema de información que rodea la interacción.</span>
+                                    </label>
+                                    <label class="flex items-center cursor-pointer text-gray-300 hover:text-white transition-colors duration-200">
+                                        <input type="radio" name="q1" value="d" class="form-radio h-4 w-4 text-blue-500 bg-gray-800 border-gray-600 focus:ring-blue-400 transition-colors duration-200">
+                                        <span class="ml-2">d) Ambos términos son sinónimos y se usan indistintamente en el desarrollo de IA.</span>
+                                    </label>
+                                </div>
+                                <div id="feedback-q1" class="mt-4 p-4 rounded-lg hidden transition-all duration-300"></div>
+                            </div>
+
+                            <!-- Pregunta 2 -->
+                            <div class="mb-8">
+                                <p class="font-semibold text-lg text-gray-200 mb-4">2. ¿Cuál de los siguientes elementos NO es parte del "Context Canvas" para un LLM?</p>
+                                <div class="space-y-3">
+                                    <label class="flex items-center cursor-pointer text-gray-300 hover:text-white transition-colors duration-200">
+                                        <input type="radio" name="q2" value="a" class="form-radio h-4 w-4 text-blue-500 bg-gray-800 border-gray-600 focus:ring-blue-400 transition-colors duration-200">
+                                        <span class="ml-2">a) Tools y sus definiciones.</span>
+                                    </label>
+                                    <label class="flex items-center cursor-pointer text-gray-300 hover:text-white transition-colors duration-200">
+                                        <input type="radio" name="q2" value="b" class="form-radio h-4 w-4 text-blue-500 bg-gray-800 border-gray-600 focus:ring-blue-400 transition-colors duration-200">
+                                        <span class="ml-2">b) El historial de chat o memoria a corto plazo.</span>
+                                    </label>
+                                    <label class="flex items-center cursor-pointer text-gray-300 hover:text-white transition-colors duration-200">
+                                        <input type="radio" name="q2" value="c" class="form-radio h-4 w-4 text-blue-500 bg-gray-800 border-gray-600 focus:ring-blue-400 transition-colors duration-200">
+                                        <span class="ml-2">c) La fuente de alimentación física del servidor.</span>
+                                    </label>
+                                    <label class="flex items-center cursor-pointer text-gray-300 hover:text-white transition-colors duration-200">
+                                        <input type="radio" name="q2" value="d" class="form-radio h-4 w-4 text-blue-500 bg-gray-800 border-gray-600 focus:ring-blue-400 transition-colors duration-200">
+                                        <span class="ml-2">d) Structured Information (por ejemplo, objetos JSON).</span>
+                                    </label>
+                                </div>
+                                <div id="feedback-q2" class="mt-4 p-4 rounded-lg hidden transition-all duration-300"></div>
+                            </div>
+                            
+                            <!-- Pregunta 3 -->
+                            <div class="mb-8">
+                                <p class="font-semibold text-lg text-gray-200 mb-4">3. ¿Qué componente del Context Canvas define el comportamiento del agente?</p>
+                                <div class="space-y-3">
+                                    <label class="flex items-center cursor-pointer text-gray-300 hover:text-white transition-colors duration-200">
+                                        <input type="radio" name="q3" value="a" class="form-radio h-4 w-4 text-blue-500 bg-gray-800 border-gray-600 focus:ring-blue-400 transition-colors duration-200">
+                                        <span class="ml-2">a) El prompt del sistema/instrucción.</span>
+                                    </label>
+                                    <label class="flex items-center cursor-pointer text-gray-300 hover:text-white transition-colors duration-200">
+                                        <input type="radio" name="q3" value="b" class="form-radio h-4 w-4 text-blue-500 bg-gray-800 border-gray-600 focus:ring-blue-400 transition-colors duration-200">
+                                        <span class="ml-2">b) La memoria a largo plazo.</span>
+                                    </label>
+                                    <label class="flex items-center cursor-pointer text-gray-300 hover:text-white transition-colors duration-200">
+                                        <input type="radio" name="q3" value="c" class="form-radio h-4 w-4 text-blue-500 bg-gray-800 border-gray-600 focus:ring-blue-400 transition-colors duration-200">
+                                        <span class="ml-2">c) El estado global/contexto.</span>
+                                    </label>
+                                    <label class="flex items-center cursor-pointer text-gray-300 hover:text-white transition-colors duration-200">
+                                        <input type="radio" name="q3" value="d" class="form-radio h-4 w-4 text-blue-500 bg-gray-800 border-gray-600 focus:ring-blue-400 transition-colors duration-200">
+                                        <span class="ml-2">d) Las respuestas de las tools.</span>
+                                    </label>
+                                </div>
+                                <div id="feedback-q3" class="mt-4 p-4 rounded-lg hidden transition-all duration-300"></div>
+                            </div>
+                            
+                            <!-- Pregunta 4 -->
+                            <div class="mb-8">
+                                <p class="font-semibold text-lg text-gray-200 mb-4">4. ¿Por qué es crucial el Context Engineering, especialmente para los agentes de IA?</p>
+                                <div class="space-y-3">
+                                    <label class="flex items-center cursor-pointer text-gray-300 hover:text-white transition-colors duration-200">
+                                        <input type="radio" name="q4" value="a" class="form-radio h-4 w-4 text-blue-500 bg-gray-800 border-gray-600 focus:ring-blue-400 transition-colors duration-200">
+                                        <span class="ml-2">a) Porque los LLMs no pueden aprender sin él.</span>
+                                    </label>
+                                    <label class="flex items-center cursor-pointer text-gray-300 hover:text-white transition-colors duration-200">
+                                        <input type="radio" name="q4" value="b" class="form-radio h-4 w-4 text-blue-500 bg-gray-800 border-gray-600 focus:ring-blue-400 transition-colors duration-200">
+                                        <span class="ml-2">b) Porque los agentes de IA requieren un conjunto completo de instrucciones para todos los escenarios posibles.</span>
+                                    </label>
+                                    <label class="flex items-center cursor-pointer text-gray-300 hover:text-white transition-colors duration-200">
+                                        <input type="radio" name="q4" value="c" class="form-radio h-4 w-4 text-blue-500 bg-gray-800 border-gray-600 focus:ring-blue-400 transition-colors duration-200">
+                                        <span class="ml-2">c) Porque previene el uso de prompts.</span>
+                                    </label>
+                                    <label class="flex items-center cursor-pointer text-gray-300 hover:text-white transition-colors duration-200">
+                                        <input type="radio" name="q4" value="d" class="form-radio h-4 w-4 text-blue-500 bg-gray-800 border-gray-600 focus:ring-blue-400 transition-colors duration-200">
+                                        <span class="ml-2">d) Porque limita la capacidad del LLM para escalar.</span>
+                                    </label>
+                                </div>
+                                <div id="feedback-q4" class="mt-4 p-4 rounded-lg hidden transition-all duration-300"></div>
+                            </div>
+                            
+                            <!-- Pregunta 5 -->
+                            <div class="mb-8">
+                                <p class="font-semibold text-lg text-gray-200 mb-4">5. ¿Qué técnica de Context Engineering permite que el LLM anote información para su uso posterior?</p>
+                                <div class="space-y-3">
+                                    <label class="flex items-center cursor-pointer text-gray-300 hover:text-white transition-colors duration-200">
+                                        <input type="radio" name="q5" value="a" class="form-radio h-4 w-4 text-blue-500 bg-gray-800 border-gray-600 focus:ring-blue-400 transition-colors duration-200">
+                                        <span class="ml-2">a) Compress Context.</span>
+                                    </label>
+                                    <label class="flex items-center cursor-pointer text-gray-300 hover:text-white transition-colors duration-200">
+                                        <input type="radio" name="q5" value="b" class="form-radio h-4 w-4 text-blue-500 bg-gray-800 border-gray-600 focus:ring-blue-400 transition-colors duration-200">
+                                        <span class="ml-2">b) Select Context.</span>
+                                    </label>
+                                    <label class="flex items-center cursor-pointer text-gray-300 hover:text-white transition-colors duration-200">
+                                        <input type="radio" name="q5" value="c" class="form-radio h-4 w-4 text-blue-500 bg-gray-800 border-gray-600 focus:ring-blue-400 transition-colors duration-200">
+                                        <span class="ml-2">c) Write Context.</span>
+                                    </label>
+                                    <label class="flex items-center cursor-pointer text-gray-300 hover:text-white transition-colors duration-200">
+                                        <input type="radio" name="q5" value="d" class="form-radio h-4 w-4 text-blue-500 bg-gray-800 border-gray-600 focus:ring-blue-400 transition-colors duration-200">
+                                        <span class="ml-2">d) Isolate Context.</span>
+                                    </label>
+                                </div>
+                                <div id="feedback-q5" class="mt-4 p-4 rounded-lg hidden transition-all duration-300"></div>
+                            </div>
+                            
+                            <!-- Pregunta 6 -->
+                            <div class="mb-8">
+                                <p class="font-semibold text-lg text-gray-200 mb-4">6. ¿Qué técnica se relaciona con la extracción de información de fuentes externas como una base de conocimientos (RAG)?</p>
+                                <div class="space-y-3">
+                                    <label class="flex items-center cursor-pointer text-gray-300 hover:text-white transition-colors duration-200">
+                                        <input type="radio" name="q6" value="a" class="form-radio h-4 w-4 text-blue-500 bg-gray-800 border-gray-600 focus:ring-blue-400 transition-colors duration-200">
+                                        <span class="ml-2">a) Workflow Engineering.</span>
+                                    </label>
+                                    <label class="flex items-center cursor-pointer text-gray-300 hover:text-white transition-colors duration-200">
+                                        <input type="radio" name="q6" value="b" class="form-radio h-4 w-4 text-blue-500 bg-gray-800 border-gray-600 focus:ring-blue-400 transition-colors duration-200">
+                                        <span class="ml-2">b) Structured Information.</span>
+                                    </label>
+                                    <label class="flex items-center cursor-pointer text-gray-300 hover:text-white transition-colors duration-200">
+                                        <input type="radio" name="q6" value="c" class="form-radio h-4 w-4 text-blue-500 bg-gray-800 border-gray-600 focus:ring-ring-blue-400 transition-colors duration-200">
+                                        <span class="ml-2">c) Compress Context.</span>
+                                    </label>
+                                    <label class="flex items-center cursor-pointer text-gray-300 hover:text-white transition-colors duration-200">
+                                        <input type="radio" name="q6" value="d" class="form-radio h-4 w-4 text-blue-500 bg-gray-800 border-gray-600 focus:ring-blue-400 transition-colors duration-200">
+                                        <span class="ml-2">d) Select Context.</span>
+                                    </label>
+                                </div>
+                                <div id="feedback-q6" class="mt-4 p-4 rounded-lg hidden transition-all duration-300"></div>
+                            </div>
+                            
+                            <!-- Pregunta 7 -->
+                            <div class="mb-8">
+                                <p class="font-semibold text-lg text-gray-200 mb-4">7. ¿Cuál es el propósito principal del Workflow Engineering?</p>
+                                <div class="space-y-3">
+                                    <label class="flex items-center cursor-pointer text-gray-300 hover:text-white transition-colors duration-200">
+                                        <input type="radio" name="q7" value="a" class="form-radio h-4 w-4 text-blue-500 bg-gray-800 border-gray-600 focus:ring-blue-400 transition-colors duration-200">
+                                        <span class="ml-2">a) Aumentar la velocidad de inferencia del LLM.</span>
+                                    </label>
+                                    <label class="flex items-center cursor-pointer text-gray-300 hover:text-white transition-colors duration-200">
+                                        <input type="radio" name="q7" value="b" class="form-radio h-4 w-4 text-blue-500 bg-gray-800 border-gray-600 focus:ring-blue-400 transition-colors duration-200">
+                                        <span class="ml-2">b) Definir secuencias de pasos para que un LLM complete una tarea de manera confiable.</span>
+                                    </label>
+                                    <label class="flex items-center cursor-pointer text-gray-300 hover:text-white transition-colors duration-200">
+                                        <input type="radio" name="q7" value="c" class="form-radio h-4 w-4 text-blue-500 bg-gray-800 border-gray-600 focus:ring-blue-400 transition-colors duration-200">
+                                        <span class="ml-2">c) Reducir el costo del token.</span>
+                                    </label>
+                                    <label class="flex items-center cursor-pointer text-gray-300 hover:text-white transition-colors duration-200">
+                                        <input type="radio" name="q7" value="d" class="form-radio h-4 w-4 text-blue-500 bg-gray-800 border-gray-600 focus:ring-blue-400 transition-colors duration-200">
+                                        <span class="ml-2">d) Isolate Context.</span>
+                                    </label>
+                                </div>
+                                <div id="feedback-q7" class="mt-4 p-4 rounded-lg hidden transition-all duration-300"></div>
+                            </div>
+                        </div>
                     </section>
                 `,
                 'prompt-vs-context': `
@@ -180,51 +353,51 @@
                             Un "Agente" es un sistema de software que usa IA para perseguir metas y completar tareas para los usuarios. Todos los agentes constan de seis bloques de construcción clave:
                         </p>
                         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                            <!-- Componente: Modelo -->
+                            <!-- Componente: Model -->
                             <div class="bg-gray-700 p-6 rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
                                 <div class="flex items-center mb-3">
                                     <span class="text-3xl mr-3">🧠</span>
-                                    <h3 class="text-xl font-bold text-white">Modelo</h3>
+                                    <h3 class="text-xl font-bold text-white">Model</h3>
                                 </div>
                                 <p class="text-gray-400">El motor de inteligencia que impulsa el razonamiento y la toma de decisiones (ej. GPT, Claude, Gemini).</p>
                             </div>
-                            <!-- Componente: Herramientas -->
+                            <!-- Componente: Tools -->
                             <div class="bg-gray-700 p-6 rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
                                 <div class="flex items-center mb-3">
                                     <span class="text-3xl mr-3">🛠️</span>
-                                    <h3 class="text-xl font-bold text-white">Herramientas</h3>
+                                    <h3 class="text-xl font-bold text-white">Tools</h3>
                                 </div>
                                 <p class="text-gray-400">Interfaces que permiten al agente interactuar con sistemas externos y APIs para realizar acciones en el mundo real.</p>
                             </div>
-                            <!-- Componente: Conocimiento y Memoria -->
+                            <!-- Componente: Knowledge and Memory -->
                             <div class="bg-gray-700 p-6 rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
                                 <div class="flex items-center mb-3">
                                     <span class="text-3xl mr-3">📚</span>
-                                    <h3 class="text-xl font-bold text-white">Conocimiento y Memoria</h3>
+                                    <h3 class="text-xl font-bold text-white">Knowledge and Memory</h3>
                                 </div>
                                 <p class="text-gray-400">Sistemas para almacenar y recuperar información, incluyendo interacciones pasadas y conocimientos aprendidos.</p>
                             </div>
-                            <!-- Componente: Audio y Voz -->
+                            <!-- Componente: Audio and Voice -->
                             <div class="bg-gray-700 p-6 rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
                                 <div class="flex items-center mb-3">
                                     <span class="text-3xl mr-3">🗣️</span>
-                                    <h3 class="text-xl font-bold text-white">Audio y Voz</h3>
+                                    <h3 class="text-xl font-bold text-white">Audio and Voice</h3>
                                 </div>
                                 <p class="text-gray-400">Capacidades para entender y generar lenguaje hablado, permitiendo interacciones basadas en la voz.</p>
                             </div>
-                            <!-- Componente: Barreras de Seguridad (Guardrails) -->
+                            <!-- Componente: Guardrails -->
                             <div class="bg-gray-700 p-6 rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
                                 <div class="flex items-center mb-3">
                                     <span class="text-3xl mr-3">🚧</span>
-                                    <h3 class="text-xl font-bold text-white">Barreras de Seguridad</h3>
+                                    <h3 class="text-xl font-bold text-white">Guardrails</h3>
                                 </div>
                                 <p class="text-gray-400">Mecanismos de seguridad para asegurar un comportamiento apropiado y prevenir acciones dañinas o no intencionadas.</p>
                             </div>
-                            <!-- Componente: Orquestación -->
+                            <!-- Componente: Orchestration -->
                             <div class="bg-gray-700 p-6 rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
                                 <div class="flex items-center mb-3">
                                     <span class="text-3xl mr-3">📊</span>
-                                    <h3 class="text-xl font-bold text-white">Orquestación</h3>
+                                    <h3 class="text-xl font-bold text-white">Orchestration</h3>
                                 </div>
                                 <p class="text-gray-400">Sistemas para desplegar, monitorear y mejorar agentes en entornos de producción.</p>
                             </div>
@@ -280,7 +453,7 @@ Informs the AI about available tools (e.g., web search) and reminds it of import
                                 <span class="font-bold">Cognition Blog Post:</span> <a href="#" class="text-blue-400 hover:text-blue-300 underline">"Don't Build Multi-Agents"</a> - Un artículo que comparte principios clave para el context engineering en marcos de trabajo multi-agente, como la importancia de compartir contexto.
                             </li>
                             <li class="text-gray-300">
-                                <span class="font-bold">LangChain Article:</span> Un artículo que detalla estrategias para el context engineering, incluyendo cómo escribir, seleccionar, comprimir y aislar el contexto de manera efectiva.
+                                <span class="font-bold">LangChain Article:</span> Un artículo que detalla estrategias para el context engineering, incluyendo cómo usar Write, Select, Compress e Isolate Context de manera efectiva.
                             </li>
                         </ul>
                     </section>
@@ -299,6 +472,78 @@ Informs the AI about available tools (e.g., web search) and reminds it of import
                         link.classList.add('active');
                     }
                 });
+
+                // Lógica interactiva para las preguntas de la página 'detalle'
+                if (pageName === 'detalle') {
+                    const feedbackElements = {
+                        q1: document.getElementById('feedback-q1'),
+                        q2: document.getElementById('feedback-q2'),
+                        q3: document.getElementById('feedback-q3'),
+                        q4: document.getElementById('feedback-q4'),
+                        q5: document.getElementById('feedback-q5'),
+                        q6: document.getElementById('feedback-q6'),
+                        q7: document.getElementById('feedback-q7')
+                    };
+
+                    const correctAnswers = {
+                        q1: 'c',
+                        q2: 'c',
+                        q3: 'a',
+                        q4: 'b',
+                        q5: 'c',
+                        q6: 'd',
+                        q7: 'b'
+                    };
+
+                    const feedbackMessages = {
+                        q1: {
+                            correct: '¡Correcto! El Context Engineering se enfoca en diseñar un ecosistema de información completo, no solo en la redacción de una instrucción única.',
+                            incorrect: 'Incorrecto. La respuesta correcta es la C. El Context Engineering es un enfoque más amplio que el Prompt Engineering, centrado en todo el contexto de la interacción, no solo en una única instrucción.'
+                        },
+                        q2: {
+                            correct: '¡Correcto! La fuente de alimentación física es un componente de hardware y no forma parte del "Context Canvas" o la información que se le proporciona al LLM.',
+                            incorrect: 'Incorrecto. La respuesta correcta es la C. Los demás elementos (tools, historial y bases de conocimiento) sí son componentes del contexto. La fuente de alimentación es hardware, no información.'
+                        },
+                        q3: {
+                            correct: '¡Correcto! El prompt del sistema o la instrucción inicial es lo que define el rol y el comportamiento que se espera del agente de IA.',
+                            incorrect: 'Incorrecto. La respuesta correcta es la A. El prompt del sistema es el que define explícitamente el comportamiento y las directrices del agente.'
+                        },
+                        q4: {
+                            correct: '¡Correcto! A diferencia de los chatbots, los agentes de IA operan de manera más autónoma, por lo que necesitan tener todas las instrucciones y el contexto necesarios de antemano.',
+                            incorrect: 'Incorrecto. La respuesta correcta es la B. La autonomía de los agentes hace que sea fundamental proporcionarles un contexto completo y robusto desde el inicio para que puedan operar de manera confiable.'
+                        },
+                        q5: {
+                            correct: '¡Correcto! La técnica de "Write Context" es la que se usa para permitir que el modelo tome notas o almacene información para su uso posterior en la misma tarea o sesión.',
+                            incorrect: 'Incorrecto. La respuesta correcta es la C. "Write Context" es la técnica específica para permitir que el LLM genere y guarde información para usarla más adelante.'
+                        },
+                        q6: {
+                            correct: '¡Correcto! "Select Context" se refiere a la recuperación de información externa relevante para la tarea, a menudo de bases de datos o conocimiento como en los sistemas RAG.',
+                            incorrect: 'Incorrecto. La respuesta correcta es la D. La técnica de "Select Context" es la encargada de extraer información de fuentes externas para enriquecer el contexto del LLM.'
+                        },
+                        q7: {
+                            correct: '¡Correcto! El "Workflow Engineering" es una estrategia clave para descomponer tareas complejas en pasos lógicos y secuenciales que el LLM puede seguir de manera confiable para lograr un objetivo.',
+                            incorrect: 'Incorrecto. La respuesta correcta es la B. El objetivo de esta técnica es estructurar los pasos que un agente de IA debe seguir para completar una tarea de principio a fin, lo que asegura un resultado más confiable.'
+                        }
+                    };
+
+                    document.querySelectorAll('input[name^="q"]').forEach(input => {
+                        input.addEventListener('change', (event) => {
+                            const questionName = event.target.name;
+                            const selectedAnswer = event.target.value;
+                            const feedbackElement = feedbackElements[questionName];
+                            
+                            feedbackElement.classList.remove('hidden', 'bg-red-900/40', 'bg-green-900/40');
+
+                            if (selectedAnswer === correctAnswers[questionName]) {
+                                feedbackElement.classList.add('bg-green-900/40');
+                                feedbackElement.innerHTML = `<p class="text-green-400 font-semibold">¡Respuesta correcta!</p><p class="text-gray-300">${feedbackMessages[questionName].correct}</p>`;
+                            } else {
+                                feedbackElement.classList.add('bg-red-900/40');
+                                feedbackElement.innerHTML = `<p class="text-red-400 font-semibold">Respuesta incorrecta</p><p class="text-gray-300">${feedbackMessages[questionName].incorrect}</p>`;
+                            }
+                        });
+                    });
+                }
             }
 
             // Añade event listeners a todos los enlaces de navegación
